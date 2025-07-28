@@ -1,0 +1,1755 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slim Bel Abria - Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #3b82f6;
+            --accent-color: #60a5fa;
+            --text-primary: #1f2937;
+            --text-secondary: #6b7280;
+            --text-light: #9ca3af;
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8fafc;
+            --bg-accent: #eff6ff;
+            --border-color: #e5e7eb;
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            --gradient-primary: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
+            --gradient-secondary: linear-gradient(135deg, #60a5fa 0%, #93c5fd 100%);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+
+        .logo span {
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        .nav-menu a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-menu a:hover {
+            color: var(--primary-color);
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: var(--bg-secondary);
+            position: relative;
+            overflow: hidden;
+            padding-top: 80px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--gradient-primary);
+            opacity: 0.02;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+        }
+
+        .hero-content h1 .name {
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-content .role {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            max-width: 500px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn-primary {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary-color);
+            padding: 1rem 2rem;
+            border: 2px solid var(--primary-color);
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        /* Profile Section */
+        .profile-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .profile-container {
+            position: relative;
+            width: 350px;
+            height: 350px;
+        }
+
+        .profile-image {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid white;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            z-index: 2;
+        }
+
+        .profile-bg {
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            background: var(--gradient-primary);
+            border-radius: 50%;
+            z-index: 1;
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .floating-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+        }
+
+        .floating-dot {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: var(--accent-color);
+            border-radius: 50%;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .floating-dot:nth-child(1) {
+            top: 20%;
+            right: 10%;
+            animation-delay: 0s;
+        }
+
+        .floating-dot:nth-child(2) {
+            bottom: 30%;
+            left: 15%;
+            animation-delay: 1s;
+        }
+
+        .floating-dot:nth-child(3) {
+            top: 60%;
+            right: 20%;
+            animation-delay: 2s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 6rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .section-title .highlight {
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-description {
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 4rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-card {
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-primary);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .skill-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .skill-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .skill-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--bg-accent);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            font-size: 1.5rem;
+        }
+
+        .skill-content h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .skill-content p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .proficiency-badge {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-left: auto;
+        }
+
+        /* Experience Section */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 30px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--gradient-primary);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
+            padding-left: 80px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 20px;
+            height: 20px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            border: 4px solid white;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .experience-card {
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .experience-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .experience-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .company-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-primary);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .experience-title h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .experience-title .company {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .experience-date {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-left: auto;
+        }
+
+        .experience-description {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .project-card {
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--gradient-primary);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .project-card:hover::before {
+            opacity: 0.05;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .project-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .project-logo {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            overflow: hidden;
+            background: white;
+            padding: 4px;
+        }
+
+        .project-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .project-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .project-description {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+            position: relative;
+            z-index: 1;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .tech-tag {
+            background: var(--bg-accent);
+            color: var(--primary-color);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            border: 1px solid var(--accent-color);
+        }
+
+        /* Contact Section */
+        .contact-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .contact-intro {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .contact-intro h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .contact-intro h2 .highlight {
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .contact-intro p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .contact-card {
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--bg-accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            color: var(--primary-color);
+            font-size: 1.5rem;
+        }
+
+        .contact-card h3 {
+            color: var(--text-primary);
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-card .value {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-card .description {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .social-section {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .social-section h3 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+        }
+
+        .social-section h3 .highlight {
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .social-icon {
+            width: 120px;
+            height: 120px;
+            background: var(--bg-primary);
+            border: 4px solid var(--border-color);
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            padding: 1rem;
+            box-sizing: border-box;
+        }
+
+        .social-icon:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .social-icon i {
+            font-size: 1.8rem;
+            margin-bottom: 0.3rem;
+            color: var(--primary-color);
+        }
+
+        .social-icon span {
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 0.2rem;
+        }
+
+        .social-icon .username {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            font-weight: 400;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border-color);
+            padding: 3rem 0 2rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .footer-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        .logo-symbol {
+            color: var(--primary-color);
+        }
+
+        .logo-text {
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .footer-copyright {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .footer-tech {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .footer-tech i {
+            color: var(--primary-color);
+        }
+
+        .footer-bottom {
+            text-align: center;
+        }
+
+        .footer-bottom p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .highlight-link {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .highlight-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 2rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .profile-container {
+                width: 250px;
+                height: 250px;
+            }
+
+            .nav-menu {
+                display: none;
+            }
+
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-item {
+                padding-left: 50px;
+            }
+
+            .timeline-item::before {
+                left: 10px;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .social-icons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .footer-top {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        /* Scroll animations */
+        .scroll-animate {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .scroll-animate.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            background: var(--bg-primary);
+            margin: 5% auto;
+            padding: 2rem;
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            width: 90%;
+            max-width: 800px;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .close {
+            color: var(--text-secondary);
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            position: absolute;
+            right: 1rem;
+            top: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .close:hover {
+            color: var(--primary-color);
+        }
+
+        .modal-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding-right: 2rem;
+        }
+
+        .modal-logo {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            object-fit: cover;
+            background: white;
+            padding: 4px;
+        }
+
+        .modal-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin: 0;
+        }
+
+        .modal-section {
+            margin-bottom: 2rem;
+        }
+
+        .modal-section h3 {
+            color: var(--primary-color);
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid var(--bg-accent);
+            padding-bottom: 0.5rem;
+        }
+
+        .modal-section p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .modal-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .modal-section li {
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .modal-section li::before {
+            content: "•";
+            color: var(--primary-color);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        .modal-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .modal-tech-tag {
+            background: var(--bg-accent);
+            color: var(--primary-color);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            border: 1px solid var(--accent-color);
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav-container">
+            <a href="#home" class="logo">
+                <span>&lt;&gt;</span>Slim Bel Abria
+            </a>
+            <ul class="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content fade-in-up">
+                <h1>Hi, I'm <span class="name">Slim Bel Abria</span></h1>
+                <span class="role">Mobile App Developer</span>
+                <p>Passionate Industrial Engineering student with specialized expertise in mobile development and embedded systems. I thrive on creating innovative Flutter applications that bridge the gap between technology and real-world solutions.</p>
+                <p>Currently leading mobile development at CAFMET, where I craft conference management applications that streamline complex workflows. My approach combines technical precision with creative problem-solving to deliver impactful digital solutions.</p>
+                <div class="cta-buttons">
+                    <a href="#portfolio" class="btn-primary">View My Work</a>
+                    <a href="#contact" class="btn-secondary">Get In Touch</a>
+                </div>
+            </div>
+            <div class="profile-section fade-in-up">
+                <div class="profile-container">
+                    <div class="profile-bg"></div>
+                    <img src="slim.png" alt="Bel Abria Slim" class="profile-image">
+                    <div class="floating-elements">
+                        <div class="floating-dot"></div>
+                        <div class="floating-dot"></div>
+                        <div class="floating-dot"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section">
+        <h2 class="section-title">Skills & <span class="highlight">Expertise</span></h2>
+        <p class="section-description">A comprehensive overview of my technical skills and proficiency levels in various mobile development technologies and tools.</p>
+        
+        <div class="skills-grid">
+            <div class="skill-card scroll-animate">
+                <div class="skill-header">
+                    <div class="skill-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <div class="skill-content">
+                        <h3>Flutter</h3>
+                        <p>Cross-platform mobile application development</p>
+                    </div>
+                    <span class="proficiency-badge">Expert</span>
+                </div>
+            </div>
+
+            <div class="skill-card scroll-animate">
+                <div class="skill-header">
+                    <div class="skill-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <div class="skill-content">
+                        <h3>UI/UX Design</h3>
+                        <p>Modern user interface design</p>
+                    </div>
+                    <span class="proficiency-badge">Advanced</span>
+                </div>
+            </div>
+
+            <div class="skill-card scroll-animate">
+                <div class="skill-header">
+                    <div class="skill-icon">
+                        <i class="fas fa-microchip"></i>
+                    </div>
+                    <div class="skill-content">
+                        <h3>Embedded Systems</h3>
+                        <p>Microcontroller programming and integration</p>
+                    </div>
+                    <span class="proficiency-badge">Advanced</span>
+                </div>
+            </div>
+
+            <div class="skill-card scroll-animate">
+                <div class="skill-header">
+                    <div class="skill-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <div class="skill-content">
+                        <h3>Databases</h3>
+                        <p>SQL, Hive database management</p>
+                    </div>
+                    <span class="proficiency-badge">Intermediate</span>
+                </div>
+            </div>
+
+            <div class="skill-card scroll-animate">
+                <div class="skill-header">
+                    <div class="skill-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <div class="skill-content">
+                        <h3>Professional Skills</h3>
+                        <p>Serious, diligent, and ambitious work ethic</p>
+                    </div>
+                    <span class="proficiency-badge">Expert</span>
+                </div>
+            </div>
+
+            <div class="skill-card scroll-animate">
+                <div class="skill-header">
+                    <div class="skill-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="skill-content">
+                        <h3>Teamwork</h3>
+                        <p>IEEE coordination and leadership</p>
+                    </div>
+                    <span class="proficiency-badge">Advanced</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="section">
+        <h2 class="section-title">Professional <span class="highlight">Experience</span></h2>
+        <p class="section-description">My career journey in mobile development, showcasing growth, achievements, and the impact I've made at each organization.</p>
+        
+        <div class="timeline">
+            <div class="timeline-item scroll-animate">
+                <div class="experience-card">
+                    <div class="experience-header">
+                        <div class="company-icon">VT</div>
+                        <div class="experience-title">
+                            <h3>Full Stack Mobile Developer Intern</h3>
+                            <div class="company">
+                                <i class="fas fa-building"></i>
+                                Visteon Tunisia
+                            </div>
+                        </div>
+                        <div class="experience-date">
+                            <i class="fas fa-calendar-alt"></i>
+                            June 2025 - August 2025
+                        </div>
+                    </div>
+                    <div class="experience-description">
+                        Full stack mobile development internship focusing on cross-platform applications and factory management systems (Flutter, Dart, Backend Integration).
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-item scroll-animate">
+                <div class="experience-card">
+                    <div class="experience-header">
+                        <div class="company-icon">CA</div>
+                        <div class="experience-title">
+                            <h3>Mobile Developer</h3>
+                            <div class="company">
+                                <i class="fas fa-building"></i>
+                                CAFMET
+                            </div>
+                        </div>
+                        <div class="experience-date">
+                            <i class="fas fa-calendar-alt"></i>
+                            February 2025 - April 2025
+                        </div>
+                    </div>
+                    <div class="experience-description">
+                        Development of Flutter mobile applications for conference management (Flutter, SQL).
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-item scroll-animate">
+                <div class="experience-card">
+                    <div class="experience-header">
+                        <div class="company-icon">VT</div>
+                        <div class="experience-title">
+                            <h3>Mobile Developer Internship</h3>
+                            <div class="company">
+                                <i class="fas fa-building"></i>
+                                Visteon Tunisia
+                            </div>
+                        </div>
+                        <div class="experience-date">
+                            <i class="fas fa-calendar-alt"></i>
+                            July 2024
+                        </div>
+                    </div>
+                    <div class="experience-description">
+                        Development of warehouse management mobile application (Flutter, SQL) for Visteon Tunisia.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="portfolio" class="section">
+        <h2 class="section-title">Featured <span class="highlight">Projects</span></h2>
+        <p class="section-description">A showcase of my most impactful mobile applications, demonstrating technical expertise, creative problem-solving, and user-centered design.</p>
+        
+        <div class="projects-grid">
+            <div class="project-card scroll-animate">
+                <div class="project-header">
+                    <div class="project-logo">
+                        <img src="menasyp.png" alt="MenaSYP">
+                    </div>
+                    <div class="project-title">MenaSYP 2025</div>
+                </div>
+                <div class="project-description">
+                    Official IEEE MenaSYP event application for participant and conference management.
+                </div>
+                <div class="project-tech">
+                    <span class="tech-tag">Flutter</span>
+                    <span class="tech-tag">Dart</span>
+                    <span class="tech-tag">Firebase</span>
+                </div>
+            </div>
+
+            <div class="project-card scroll-animate">
+                <div class="project-header">
+                    <div class="project-logo">
+                        <img src="cafmet.jpg" alt="CAFMET">
+                    </div>
+                    <div class="project-title">CAFMET</div>
+                </div>
+                <div class="project-description">
+                    Official conference management application with booking and session management.
+                </div>
+                <div class="project-tech">
+                    <span class="tech-tag">Flutter</span>
+                    <span class="tech-tag">SQLite</span>
+                    <span class="tech-tag">REST API</span>
+                </div>
+            </div>
+
+            <div class="project-card scroll-animate">
+                <div class="project-header">
+                    <div class="project-logo">
+                        <img src="agrisense.png" alt="AgriSense">
+                    </div>
+                    <div class="project-title">AgriSense</div>
+                </div>
+                <div class="project-description">
+                    Intelligent agricultural management system with UI/UX design and sensor integration.
+                </div>
+                <div class="project-tech">
+                    <span class="tech-tag">Flutter</span>
+                    <span class="tech-tag">IoT</span>
+                    <span class="tech-tag">Arduino</span>
+                </div>
+            </div>
+
+            <div class="project-card scroll-animate">
+                <div class="project-header">
+                    <div class="project-logo">
+                        <img src="spark.png" alt="Spark">
+                    </div>
+                    <div class="project-title">Spark</div>
+                </div>
+                <div class="project-description">
+                    Educational STEM application for children developed for TSYP12 challenge.
+                </div>
+                <div class="project-tech">
+                    <span class="tech-tag">Flutter</span>
+                    <span class="tech-tag">Education</span>
+                    <span class="tech-tag">STEM</span>
+                </div>
+            </div>
+
+            <div class="project-card scroll-animate">
+                <div class="project-header">
+                    <div class="project-logo">
+                        <img src="vistrack.png" alt="Vistrack">
+                    </div>
+                    <div class="project-title">Vistrack</div>
+                </div>
+                <div class="project-description">
+                    Cross-platform factory export operations management system for Visteon Tunisia.
+                </div>
+                <div class="project-tech">
+                    <span class="tech-tag">Flutter</span>
+                    <span class="tech-tag">Cross-platform</span>
+                    <span class="tech-tag">Factory Management</span>
+                </div>
+            </div>
+
+            <div class="project-card scroll-animate">
+                <div class="project-header">
+                    <div class="project-logo">
+                        <img src="viscan.png" alt="Viscan">
+                    </div>
+                    <div class="project-title">Viscan</div>
+                </div>
+                <div class="project-description">
+                    Warehouse management system with QR code scanning for Visteon Tunisia.
+                </div>
+                <div class="project-tech">
+                    <span class="tech-tag">Flutter</span>
+                    <span class="tech-tag">QR Codes</span>
+                    <span class="tech-tag">Warehouse Management</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="contact-container">
+            <div class="contact-intro">
+                <h2>Let's <span class="highlight">Connect</span></h2>
+                <p>Ready to discuss your next mobile project? I'm always excited to collaborate on innovative applications and explore new opportunities.</p>
+            </div>
+
+            <div class="contact-cards">
+                <div class="contact-card scroll-animate">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3>Email</h3>
+                    <div class="value">belabria26@gmail.com</div>
+                    <div class="description">Best way to reach me for business inquiries</div>
+                </div>
+
+                <div class="contact-card scroll-animate">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <h3>Phone</h3>
+                    <div class="value">+216 25 820 430</div>
+                    <div class="description">Available for calls and messages</div>
+                </div>
+
+                <div class="contact-card scroll-animate">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3>Location</h3>
+                    <div class="value">Soliman, Nabeul, Tunisia</div>
+                    <div class="description">Open to remote work and opportunities</div>
+                </div>
+            </div>
+
+            <div class="social-section">
+                <h3>Follow Me <span class="highlight">Online</span></h3>
+                <div class="social-icons">
+                    <a href="https://github.com/SlimBelAbria" target="_blank" class="social-icon">
+                        <i class="fab fa-github"></i>
+                        <span>GitHub</span>
+                        <div class="username">@SlimBelAbria</div>
+                    </a>
+                    <a href="https://www.linkedin.com/in/slim-bel-abria-232057276/" target="_blank" class="social-icon">
+                        <i class="fab fa-linkedin"></i>
+                        <span>LinkedIn</span>
+                        <div class="username">Bel Abria Slim</div>
+                    </a>
+                    <a href="https://www.behance.net/belabriaslim" target="_blank" class="social-icon">
+                        <i class="fab fa-behance"></i>
+                        <span>Behance</span>
+                        <div class="username">@belabriaslim</div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-top">
+                <div class="footer-logo">
+                    <span class="logo-symbol">&lt;&gt;</span>
+                    <span class="logo-text">Bel Abria Slim</span>
+                </div>
+                <div class="footer-copyright">
+                    © 2025 Bel Abria Slim. All rights reserved.
+                </div>
+                <div class="footer-tech">
+                    Made with <i class="fas fa-heart"></i> using HTML & CSS
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>This portfolio showcases my passion for mobile development and innovative solutions.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Project Modal -->
+    <div id="projectModal" class="modal">
+        <div class="modal-content" id="modalContent">
+        </div>
+    </div>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const headerHeight = document.querySelector('.header').offsetHeight;
+                    const targetPosition = target.offsetTop - headerHeight - 20;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Header background on scroll
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
+                header.style.boxShadow = '0 1px 3px 0 rgb(0 0 0 / 0.1)';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+                header.style.boxShadow = 'none';
+            }
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.scroll-animate').forEach(element => {
+            observer.observe(element);
+        });
+
+        // Add hover effects to project cards
+        document.querySelectorAll('.project-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+
+        // Modal functionality
+        function openModal(projectId) {
+            const modal = document.getElementById('projectModal');
+            const modalContent = document.getElementById('modalContent');
+            
+            // Get project data
+            const projectData = getProjectData(projectId);
+            
+            // Update modal content
+            modalContent.innerHTML = projectData;
+            
+            // Show modal
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('projectModal');
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        function getProjectData(projectId) {
+            const projects = {
+                menasyp: `
+                    <div class="modal-header">
+                        <img src="menasyp.png" alt="MenaSYP 2025" class="modal-logo">
+                        <h1 class="modal-title">MenaSYP 2025</h1>
+                        <span class="close" onclick="closeModal()">&times;</span>
+                    </div>
+                    
+                    <div class="modal-section">
+                        <h3>Project Overview</h3>
+                        <p>MenaSYP 2025 is the official mobile application for the IEEE Middle East and North Africa Student and Young Professional Congress. This comprehensive event management platform was developed to streamline the entire conference experience, from registration to networking. The app serves as the central hub for participants, speakers, and organizers, providing real-time updates and seamless interaction throughout the event.</p>
+                        <p>The project demonstrates advanced Flutter development skills, real-time data synchronization, and user experience optimization for large-scale events. It successfully handled hundreds of participants during the IEEE MenaSYP 2025 conference, showcasing robust performance and intuitive navigation.</p>
+                    </div>
+
+                    <div class="modal-section">
+                        <h3>Core Functionality</h3>
+                        <ul>
+                            <li>Event registration and participant management system</li>
+                            <li>Conference schedule and session tracking</li>
+                            <li>Real-time notifications for event updates</li>
+                            <li>QR code-based check-in system</li>
+                            <li>Networking features for participants</li>
+                            <li>Speaker profiles and session details</li>
+                            <li>Interactive event map and venue information</li>
+                        </ul>
+                    </div>
+
+                    <div class="modal-tech">
+                        <span class="modal-tech-tag">Flutter</span>
+                        <span class="modal-tech-tag">Dart</span>
+                        <span class="modal-tech-tag">Firebase</span>
+                        <span class="modal-tech-tag">QR Code</span>
+                        <span class="modal-tech-tag">Real-time</span>
+                    </div>
+                `,
+                
+                cafmet: `
+                    <div class="modal-header">
+                        <img src="cafmet.jpg" alt="CAFMET" class="modal-logo">
+                        <h1 class="modal-title">CAFMET</h1>
+                        <span class="close" onclick="closeModal()">&times;</span>
+                    </div>
+                    
+                    <div class="modal-section">
+                        <h3>Project Overview</h3>
+                        <p>CAFMET is the official conference management application designed to revolutionize how professional conferences are organized and experienced. This comprehensive platform addresses the complex needs of conference organizers, speakers, and attendees by providing a unified solution for event management, networking, and engagement.</p>
+                        <p>The application streamlines the entire conference lifecycle, from initial planning to post-event analytics. It features advanced booking systems, real-time attendance tracking, and sophisticated networking tools that enhance the overall conference experience. The project showcases expertise in building scalable business applications with complex data management requirements.</p>
+                    </div>
+
+                    <div class="modal-section">
+                        <h3>Core Functionality</h3>
+                        <ul>
+                            <li>Complete conference booking and registration system</li>
+                            <li>Session management with speaker assignments</li>
+                            <li>Real-time attendance tracking</li>
+                            <li>Networking and business card exchange</li>
+                            <li>Presentation materials sharing</li>
+                            <li>Live polling and Q&A during sessions</li>
+                            <li>Analytics dashboard for organizers</li>
+                            <li>Multi-language support</li>
+                        </ul>
+                    </div>
+
+                    <div class="modal-tech">
+                        <span class="modal-tech-tag">Flutter</span>
+                        <span class="modal-tech-tag">SQLite</span>
+                        <span class="modal-tech-tag">REST API</span>
+                        <span class="modal-tech-tag">Real-time</span>
+                        <span class="modal-tech-tag">Analytics</span>
+                    </div>
+                `,
+                
+                agrisense: `
+                    <div class="modal-header">
+                        <img src="agrisense.png" alt="AgriSense" class="modal-logo">
+                        <h1 class="modal-title">AgriSense</h1>
+                        <span class="close" onclick="closeModal()">&times;</span>
+                    </div>
+                    
+                    <div class="modal-section">
+                        <h3>Project Overview</h3>
+                        <p>AgriSense represents a cutting-edge agricultural technology solution that combines mobile application development with IoT sensor integration to create a comprehensive farm management system. This innovative project bridges the gap between traditional farming practices and modern technology, providing farmers with real-time insights and automated control systems.</p>
+                        <p>The system integrates various sensors for monitoring soil conditions, weather patterns, and crop health, delivering actionable data through an intuitive mobile interface. AgriSense demonstrates expertise in IoT integration, sensor data processing, and creating practical solutions for real-world agricultural challenges. The project showcases the potential of technology to transform traditional industries.</p>
+                    </div>
+
+                    <div class="modal-section">
+                        <h3>Core Functionality</h3>
+                        <ul>
+                            <li>Real-time crop monitoring with sensor data</li>
+                            <li>Weather integration and forecasting</li>
+                            <li>Automated irrigation control system</li>
+                            <li>Soil quality analysis and recommendations</li>
+                            <li>Crop health monitoring with AI detection</li>
+                            <li>Inventory management for agricultural supplies</li>
+                            <li>Yield prediction and optimization</li>
+                            <li>Alert system for critical conditions</li>
+                        </ul>
+                    </div>
+
+                    <div class="modal-tech">
+                        <span class="modal-tech-tag">Flutter</span>
+                        <span class="modal-tech-tag">IoT</span>
+                        <span class="modal-tech-tag">Arduino</span>
+                        <span class="modal-tech-tag">Sensors</span>
+                        <span class="modal-tech-tag">AI</span>
+                    </div>
+                `,
+                
+                spark: `
+                    <div class="modal-header">
+                        <img src="spark.png" alt="Spark" class="modal-logo">
+                        <h1 class="modal-title">Spark</h1>
+                        <span class="close" onclick="closeModal()">&times;</span>
+                    </div>
+                    
+                    <div class="modal-section">
+                        <h3>Project Overview</h3>
+                        <p>Spark is an innovative educational application designed to ignite children's passion for STEM (Science, Technology, Engineering, and Mathematics) through interactive learning experiences. Developed for the TSYP12 challenge, this project combines educational content with gamification elements to create an engaging learning environment for children aged 5-12.</p>
+                        <p>The application features virtual laboratory simulations, interactive experiments, and personalized learning paths that adapt to each child's progress. Spark demonstrates expertise in educational technology, gamification design, and creating age-appropriate content that makes learning both fun and effective. The project showcases the potential of mobile technology to transform education and inspire the next generation of innovators.</p>
+                    </div>
+
+                    <div class="modal-section">
+                        <h3>Core Functionality</h3>
+                        <ul>
+                            <li>Interactive STEM lessons and experiments</li>
+                            <li>Gamified learning with points and achievements</li>
+                            <li>Virtual lab simulations</li>
+                            <li>Progress tracking and personalized learning paths</li>
+                            <li>Parent/teacher dashboard</li>
+                            <li>Offline learning capabilities</li>
+                            <li>Multi-age content (5-12 years)</li>
+                            <li>Safety-focused virtual experiments</li>
+                        </ul>
+                    </div>
+
+                    <div class="modal-tech">
+                        <span class="modal-tech-tag">Flutter</span>
+                        <span class="modal-tech-tag">Education</span>
+                        <span class="modal-tech-tag">STEM</span>
+                        <span class="modal-tech-tag">Gamification</span>
+                        <span class="modal-tech-tag">3D</span>
+                    </div>
+                `,
+                
+                vistrack: `
+                    <div class="modal-header">
+                        <img src="vistrack.png" alt="Vistrack" class="modal-logo">
+                        <h1 class="modal-title">Vistrack</h1>
+                        <span class="close" onclick="closeModal()">&times;</span>
+                    </div>
+                    
+                    <div class="modal-section">
+                        <h3>Project Overview</h3>
+                        <p>Vistrack is a comprehensive cross-platform factory management system developed for Visteon Tunisia to streamline export operations and enhance productivity. This enterprise-level application represents a significant advancement in industrial software, providing real-time monitoring and control of factory processes across multiple platforms.</p>
+                        <p>The system integrates advanced analytics, user management, and operational tracking to create a unified platform for factory management. Vistrack demonstrates expertise in building complex enterprise applications, cross-platform development, and creating solutions that meet the rigorous demands of industrial environments. The project showcases the ability to develop scalable business solutions that directly impact operational efficiency.</p>
+                    </div>
+
+                    <div class="modal-section">
+                        <h3>Core Functionality</h3>
+                        <ul>
+                            <li>Home Dashboard with factory operations overview and KPIs</li>
+                            <li>Product tracking across the entire export process</li>
+                            <li>User management with role-based access control</li>
+                            <li>Shift planning and assignment system</li>
+                            <li>Insights & Analytics with interactive charts</li>
+                            <li>Comprehensive history log for all activities</li>
+                            <li>Settings configuration and system preferences</li>
+                            <li>Real-time data synchronization</li>
+                        </ul>
+                    </div>
+
+                    <div class="modal-tech">
+                        <span class="modal-tech-tag">Flutter</span>
+                        <span class="modal-tech-tag">Dart</span>
+                        <span class="modal-tech-tag">Cross-platform</span>
+                        <span class="modal-tech-tag">Factory Management</span>
+                        <span class="modal-tech-tag">Analytics</span>
+                    </div>
+                `,
+                
+                viscan: `
+                    <div class="modal-header">
+                        <img src="viscan.png" alt="Viscan" class="modal-logo">
+                        <h1 class="modal-title">Viscan</h1>
+                        <span class="close" onclick="closeModal()">&times;</span>
+                    </div>
+                    
+                    <div class="modal-section">
+                        <h3>Project Overview</h3>
+                        <p>Viscan is a specialized warehouse management system developed for Visteon Tunisia that leverages QR code technology to revolutionize inventory tracking and warehouse operations. This innovative solution addresses the complex challenges of modern warehouse management by providing real-time visibility and control over inventory processes.</p>
+                        <p>The system integrates advanced scanning technology, real-time data synchronization, and comprehensive reporting to create an efficient warehouse management ecosystem. Viscan demonstrates expertise in barcode/QR code integration, real-time data processing, and creating practical solutions for industrial environments. The project showcases the ability to develop specialized tools that significantly improve operational efficiency in warehouse settings.</p>
+                    </div>
+
+                    <div class="modal-section">
+                        <h3>Core Functionality</h3>
+                        <ul>
+                            <li>QR code scanning for inventory tracking</li>
+                            <li>Real-time stock level monitoring</li>
+                            <li>Barcode generation and printing</li>
+                            <li>Order fulfillment and shipping tracking</li>
+                            <li>Warehouse layout optimization</li>
+                            <li>Employee task assignment</li>
+                            <li>Inventory reports and analytics</li>
+                            <li>Integration with ERP systems</li>
+                        </ul>
+                    </div>
+
+                    <div class="modal-tech">
+                        <span class="modal-tech-tag">Flutter</span>
+                        <span class="modal-tech-tag">QR Codes</span>
+                        <span class="modal-tech-tag">Warehouse Management</span>
+                        <span class="modal-tech-tag">Barcode</span>
+                        <span class="modal-tech-tag">ERP</span>
+                    </div>
+                `
+            };
+            
+            return projects[projectId] || '';
+        }
+
+        // Add click functionality to project cards
+        document.querySelectorAll('.project-card').forEach((card, index) => {
+            const projectIds = ['menasyp', 'cafmet', 'agrisense', 'spark', 'vistrack', 'viscan'];
+            card.addEventListener('click', function() {
+                openModal(projectIds[index]);
+            });
+        });
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('projectModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+    </script>
+</body>
+</html>
