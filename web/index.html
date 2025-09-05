@@ -1,0 +1,2909 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slim Bel Abria - Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0a0a0a;
+            color: #ffffff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(0, 255, 136, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        .logo span {
+            color: #00ff88;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            color: #00ff88;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            gap: 4rem;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+            margin-top: 2rem;
+        }
+
+        .hero-content h1 .name {
+            color: #00ff88;
+        }
+
+        .hero-content h1 .role {
+            color: #00d4ff;
+        }
+
+        .hero-content .role-title {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            color: #ffffff;
+        }
+
+        .underline {
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, #00ff88, #00d4ff);
+            margin-bottom: 2rem;
+            border-radius: 2px;
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            color: #cccccc;
+            margin-bottom: 1.5rem;
+            max-width: 600px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn-primary {
+            background: #00ff88;
+            color: #000000;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 255, 136, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #ffffff;
+            padding: 1rem 2rem;
+            border: 2px solid #00ff88;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background: #00ff88;
+            color: #000000;
+        }
+
+        /* Profile Circle */
+        .profile-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .profile-circle {
+            width: 300px;
+            height: 300px;
+            background: #1a1a1a;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            font-weight: 700;
+            color: #666666;
+            position: relative;
+            border: 4px solid transparent;
+            background-clip: padding-box;
+        }
+
+        .profile-circle::before {
+            content: '';
+            position: absolute;
+            top: -4px;
+            left: -4px;
+            right: -4px;
+            bottom: -4px;
+            background: linear-gradient(45deg, #00ff88, #00d4ff);
+            border-radius: 50%;
+            z-index: -1;
+        }
+
+        .decorative-dot {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+        }
+
+        .dot-1 {
+            background: #00ff88;
+            top: 50px;
+            right: 50px;
+        }
+
+        .dot-2 {
+            background: #00d4ff;
+            bottom: 50px;
+            left: 50px;
+        }
+
+        /* Scroll Indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            color: #ffffff;
+        }
+
+        .scroll-indicator i {
+            margin-top: 0.5rem;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 6rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .section-title .highlight {
+            background: linear-gradient(45deg, #00ff88, #00d4ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-description {
+            text-align: center;
+            color: #cccccc;
+            font-size: 1.1rem;
+            margin-bottom: 4rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 2rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .skill-card:hover {
+            border-color: #00ff88;
+            transform: translateY(-5px);
+        }
+
+        .skill-icon {
+            color: #00ff88;
+            font-size: 2rem;
+            margin-top: 0.5rem;
+        }
+
+        .skill-content {
+            flex: 1;
+        }
+
+        .skill-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .skill-header h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #ffffff;
+        }
+
+        .proficiency {
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #000000;
+        }
+
+        .proficiency.expert {
+            background: #00ff88;
+        }
+
+        .proficiency.advanced {
+            background: #00ff88;
+        }
+
+        .proficiency.intermediate {
+            background: #00ff88;
+        }
+
+        .skill-content p {
+            color: #cccccc;
+            font-size: 0.9rem;
+        }
+
+        /* Experience Section */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 30px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #00ff88;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
+            width: 100%;
+            padding-left: 80px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 20px;
+            height: 20px;
+            background: #00ff88;
+            border-radius: 50%;
+            border: 3px solid #0a0a0a;
+        }
+
+        .experience-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .experience-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .company-icon {
+            width: 50px;
+            height: 50px;
+            background: #00ff88;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #000000;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .experience-title {
+            flex: 1;
+        }
+
+        .experience-title h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 0.25rem;
+        }
+
+        .experience-title .company {
+            color: #cccccc;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .experience-date {
+            color: #00ff88;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .experience-description {
+            color: #cccccc;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .achievements h4 {
+            color: #00ff88;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .achievements ul {
+            list-style: none;
+        }
+
+        .achievements li {
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+        }
+
+        .achievements li::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: #00ff88;
+            border-radius: 50%;
+            margin-top: 0.5rem;
+            flex-shrink: 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 2rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .profile-circle {
+                width: 250px;
+                height: 250px;
+                font-size: 3rem;
+            }
+
+            .nav-menu {
+                display: none;
+            }
+
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 50px;
+            }
+
+            .timeline-item::before {
+                left: 10px !important;
+            }
+
+            .activities-timeline::before {
+                left: 20px;
+            }
+
+            .activity-item {
+                width: 100%;
+                padding-left: 50px;
+            }
+
+            .activity-item::before {
+                left: 10px !important;
+            }
+
+            .languages-interests {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .project-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 2rem;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            border-color: #00ff88;
+            transform: translateY(-5px);
+        }
+
+        .project-card .external-link {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            color: #00ff88;
+            font-size: 1.2rem;
+        }
+
+        .project-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-logo {
+            width: 50px;
+            height: 50px;
+            background: #00ff88;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #000000;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .project-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #ffffff;
+        }
+
+        .project-description {
+            color: #cccccc;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tech-tag {
+            background: transparent;
+            color: #00ff88;
+            border: 1px solid #00ff88;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .cta-section {
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .cta-section p {
+            color: #cccccc;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section a {
+            color: #00ff88;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .cta-section a:hover {
+            text-decoration: underline;
+        }
+
+        /* Education Section */
+        .education-timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .education-timeline::before {
+            content: '';
+            position: absolute;
+            left: 30px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #00d4ff;
+        }
+
+        .education-item {
+            position: relative;
+            margin-bottom: 3rem;
+            padding-left: 80px;
+        }
+
+        .education-item::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            width: 20px;
+            height: 20px;
+            background: #00d4ff;
+            border-radius: 50%;
+        }
+
+        .education-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 2rem;
+        }
+
+        .education-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .education-icon {
+            width: 50px;
+            height: 50px;
+            background: #00d4ff;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #000000;
+            font-size: 1.5rem;
+        }
+
+        .education-title {
+            flex: 1;
+        }
+
+        .education-title h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 0.25rem;
+        }
+
+        .education-title .institution {
+            color: #cccccc;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .education-date {
+            color: #00d4ff;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .education-description {
+            color: #cccccc;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        /* Extracurricular Activities Section */
+        .activities-timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .activities-timeline::before {
+            content: '';
+            position: absolute;
+            left: 30px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #00ff88;
+        }
+
+        .activity-item {
+            position: relative;
+            margin-bottom: 3rem;
+            width: 100%;
+            padding-left: 80px;
+        }
+
+        .activity-item::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 20px;
+            height: 20px;
+            background: #00ff88;
+            border-radius: 50%;
+            border: 3px solid #0a0a0a;
+        }
+
+        .activity-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .activity-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .activity-icon {
+            width: 50px;
+            height: 50px;
+            background: #00ff88;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #000000;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .activity-title {
+            flex: 1;
+        }
+
+        .activity-title h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+        }
+
+        .organization {
+            color: #00ff88;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .activity-date {
+            color: #cccccc;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .activity-description {
+            color: #cccccc;
+            line-height: 1.6;
+        }
+
+        .activity-description p {
+            margin-bottom: 1rem;
+        }
+
+        .activity-achievements {
+            background: rgba(0, 255, 136, 0.05);
+            border-left: 3px solid #00ff88;
+            padding: 1rem;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .activity-achievements h4 {
+            color: #00ff88;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .activity-achievements ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .activity-achievements li {
+            color: #cccccc;
+            margin-bottom: 0.5rem;
+            padding-left: 1rem;
+            position: relative;
+        }
+
+        .activity-achievements li::before {
+            content: '▸';
+            color: #00ff88;
+            position: absolute;
+            left: 0;
+        }
+
+        .education-details h4 {
+            color: #00d4ff;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .education-details ul {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .education-details li {
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+        }
+
+        .education-details li::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            margin-top: 0.5rem;
+            flex-shrink: 0;
+        }
+
+        .education-details .achievements li::before {
+            background: #00d4ff;
+        }
+
+        .education-details .coursework li::before {
+            background: #00ff88;
+        }
+
+        /* Languages & Interests Section */
+        .languages-interests {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .languages-section, .interests-section {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 2rem;
+        }
+
+        .section-subtitle {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .languages-section .section-subtitle {
+            color: #00ff88;
+        }
+
+        .interests-section .section-subtitle {
+            color: #00d4ff;
+        }
+
+        .section-subtitle i {
+            font-size: 1.2rem;
+        }
+
+        .section-description-small {
+            color: #cccccc;
+            margin-bottom: 2rem;
+            font-size: 0.9rem;
+        }
+
+        .language-card, .interest-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .language-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .language-name {
+            font-weight: 600;
+            color: #ffffff;
+        }
+
+        .proficiency-level {
+            background: linear-gradient(45deg, #00ff88, #00d4ff);
+            color: #000000;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+            margin-bottom: 0.5rem;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #00ff88, #00d4ff);
+            border-radius: 3px;
+            transition: width 0.3s ease;
+        }
+
+        .progress-labels {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            color: #888888;
+        }
+
+        .interest-card {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .interest-icon {
+            color: #00d4ff;
+            font-size: 1.5rem;
+            width: 40px;
+            text-align: center;
+        }
+
+        .interest-content h4 {
+            color: #ffffff;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .interest-content p {
+            color: #cccccc;
+            font-size: 0.9rem;
+        }
+
+        /* Contact Section */
+        .contact-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .contact-intro {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .contact-intro h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .contact-intro h2 .highlight {
+            background: linear-gradient(45deg, #00ff88, #00d4ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .contact-intro p {
+            color: #cccccc;
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .contact-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid #00ff88;
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 255, 136, 0.2);
+        }
+
+        .contact-icon {
+            color: #00ff88;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-card h3 {
+            color: #ffffff;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-card .value {
+            color: #00ff88;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-card .description {
+            color: #cccccc;
+            font-size: 0.9rem;
+        }
+
+        .social-section {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .social-section h3 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+        }
+
+        .social-section h3 .highlight {
+            background: linear-gradient(45deg, #00ff88, #00d4ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .social-icon {
+            width: 80px;
+            height: 80px;
+            background: rgba(0, 0, 0, 0.8);
+            border: 2px solid #00ff88;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .social-icon:hover {
+            background: #00ff88;
+            color: #000000;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 255, 136, 0.3);
+        }
+
+        .social-icon i {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: inherit;
+        }
+
+        .social-icon span {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: inherit;
+        }
+
+        .social-icon .username {
+            font-size: 0.7rem;
+            color: inherit;
+            font-weight: 400;
+            opacity: 0.8;
+        }
+
+        .social-icon:hover .username {
+            opacity: 1;
+        }
+
+        /* Dialog Styles */
+        .dialog-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            backdrop-filter: blur(5px);
+        }
+
+        .dialog {
+            background: #1a1a1a;
+            border: 1px solid #00ff88;
+            border-radius: 12px;
+            padding: 2rem;
+            max-width: 500px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .dialog-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .dialog-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #ffffff;
+        }
+
+        .dialog-close {
+            background: none;
+            border: none;
+            color: #ffffff;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .dialog-close:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #ffffff;
+            font-weight: 500;
+        }
+
+        .form-input, .form-textarea, .form-select {
+            width: 100%;
+            padding: 0.75rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: #ffffff;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus, .form-textarea:focus, .form-select:focus {
+            outline: none;
+            border-color: #00ff88;
+            box-shadow: 0 0 0 2px rgba(0, 255, 136, 0.2);
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .dialog-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: flex-end;
+            margin-top: 2rem;
+        }
+
+        .btn-cancel {
+            background: transparent;
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-cancel:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .btn-send {
+            background: #00ff88;
+            color: #000000;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-send:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 255, 136, 0.3);
+        }
+
+        .project-cta {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid #00ff88;
+            border-radius: 12px;
+            padding: 3rem;
+            text-align: center;
+        }
+
+        .project-cta h3 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 1rem;
+        }
+
+        .project-cta p {
+            color: #cccccc;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons-final {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-final-primary {
+            background: #00ff88;
+            color: #000000;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-final-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 255, 136, 0.3);
+        }
+
+        .btn-final-secondary {
+            background: transparent;
+            color: #00ff88;
+            padding: 1rem 2rem;
+            border: 2px solid #00ff88;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-final-secondary:hover {
+            background: #00ff88;
+            color: #000000;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            background: #0a0a0a;
+            margin: 5% auto;
+            padding: 2rem;
+            border: 1px solid #333;
+            border-radius: 16px;
+            width: 90%;
+            max-width: 800px;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            position: absolute;
+            right: 1rem;
+            top: 1rem;
+        }
+
+        .close:hover {
+            color: #00ff88;
+        }
+
+        .modal-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding-right: 2rem;
+        }
+
+        .modal-logo {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            object-fit: cover;
+        }
+
+        .modal-logo.transparent-bg {
+            background-color: white;
+            padding: 4px;
+        }
+
+        .modal-title {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #00ff88;
+            margin: 0;
+        }
+
+        .modal-section {
+            margin-bottom: 2rem;
+        }
+
+        .modal-section h3 {
+            color: #00ff88;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid #333;
+            padding-bottom: 0.5rem;
+        }
+
+        .modal-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .modal-section li {
+            color: #ccc;
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .modal-section li::before {
+            content: "•";
+            color: #00ff88;
+            position: absolute;
+            left: 0;
+        }
+
+        .modal-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .modal-tech-tag {
+            background: rgba(0, 255, 136, 0.1);
+            color: #00ff88;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            border: 1px solid rgba(0, 255, 136, 0.3);
+        }
+
+        /* Footer */
+        .footer {
+            background: rgba(255, 255, 255, 0.02);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 3rem 0 2rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .footer-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        .logo-symbol {
+            color: #00ff88;
+        }
+
+        .logo-text {
+            background: linear-gradient(45deg, #00ff88, #00d4ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .footer-copyright {
+            color: #888888;
+            font-size: 0.9rem;
+        }
+
+        .footer-tech {
+            color: #888888;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .footer-tech i {
+            color: #00ff88;
+        }
+
+        .footer-bottom {
+            text-align: center;
+        }
+
+        .footer-bottom p {
+            color: #888888;
+            font-size: 0.9rem;
+        }
+
+        .highlight-link {
+            color: #00ff88;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .highlight-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(45deg, #00ff88, #00d4ff);
+            color: #000000;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            box-shadow: 0 10px 20px rgba(0, 255, 136, 0.3);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(0, 255, 136, 0.4);
+        }
+
+        .back-to-top.show {
+            display: flex;
+        }
+
+        .cv-download {
+            background: rgba(0, 255, 136, 0.1);
+            padding: 0.1rem 1rem !important;
+            border-radius: 4px;
+            border: 1px solid rgba(0, 255, 136, 0.3);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .cv-download:hover {
+            background: rgba(0, 255, 136, 0.2);
+            transform: translateY(-2px);
+        }
+        /* Responsive adjustments for footer */
+        @media (max-width: 768px) {
+            .footer-top {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+
+            .languages-interests {
+                grid-template-columns: 1fr;
+            }
+
+            .social-icons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .cta-buttons-final {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav-container">
+            <div class="logo">
+                <span>&lt;&gt;</span> Slim Bel Abria
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="path/to/your/cv.pdf" class="cv-download" download>
+                    <i class="fas fa-download"></i> Download CV
+                </a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Hi, I'm <span class="name">Slim</span> <span class="role">Bel Abria</span></h1>
+            <div class="role-title">Mobile App Developer</div>
+            <div class="underline"></div>
+            <p>Passionate Industrial Engineering student with specialized expertise in mobile development and embedded systems. I thrive on creating innovative Flutter applications that bridge the gap between technology and real-world solutions.</p>
+            <p>Currently leading mobile development at CAFMET, where I craft conference management applications that streamline complex workflows. My approach combines technical precision with creative problem-solving to deliver impactful digital solutions.</p>
+            <div class="cta-buttons">
+                <a href="#portfolio" class="btn-primary">View My Work</a>
+                <a href="#contact" class="btn-secondary">Get In Touch</a>
+            </div>
+        </div>
+        <div class="profile-section">
+            <div class="profile-circle">
+                <img src="slim.png" alt="Slim Bel Abria" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%; background-color: white; padding: 8px;">
+            </div>
+            <div class="decorative-dot dot-1"></div>
+            <div class="decorative-dot dot-2"></div>
+        </div>
+    </section>
+
+    <div class="scroll-indicator">
+        <div>Scroll Down</div>
+        <i class="fas fa-chevron-down"></i>
+    </div>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section">
+        <h2 class="section-title">Skills & <span class="highlight">Expertise</span></h2>
+        <p class="section-description">A comprehensive overview of my technical skills and proficiency levels in various mobile development technologies and tools.</p>
+        
+        <div class="skills-grid">
+            <div class="skill-card">
+                <div class="skill-icon">
+                    <i class="fas fa-mobile-alt"></i>
+                </div>
+                <div class="skill-content">
+                    <div class="skill-header">
+                        <h3>Flutter</h3>
+                        <span class="proficiency expert">Expert</span>
+                    </div>
+                    <p>Cross-platform mobile application development</p>
+                </div>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-icon">
+                    <i class="fas fa-palette"></i>
+                </div>
+                <div class="skill-content">
+                    <div class="skill-header">
+                        <h3>UI/UX Design</h3>
+                        <span class="proficiency advanced">Advanced</span>
+                    </div>
+                    <p>Modern user interface design</p>
+                </div>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-icon">
+                    <i class="fas fa-microchip"></i>
+                </div>
+                <div class="skill-content">
+                    <div class="skill-header">
+                        <h3>Embedded Systems</h3>
+                        <span class="proficiency advanced">Advanced</span>
+                    </div>
+                    <p>Microcontroller programming and integration</p>
+                </div>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-icon">
+                    <i class="fas fa-database"></i>
+                </div>
+                <div class="skill-content">
+                    <div class="skill-header">
+                        <h3>Databases</h3>
+                        <span class="proficiency intermediate">Intermediate</span>
+                    </div>
+                    <p>SQL, Hive database management</p>
+                </div>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-icon">
+                    <i class="fas fa-rocket"></i>
+                </div>
+                <div class="skill-content">
+                    <div class="skill-header">
+                        <h3>Professional Skills</h3>
+                        <span class="proficiency expert">Expert</span>
+                    </div>
+                    <p>Serious, diligent, and ambitious work ethic</p>
+                </div>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <div class="skill-content">
+                    <div class="skill-header">
+                        <h3>Teamwork</h3>
+                        <span class="proficiency advanced">Advanced</span>
+                    </div>
+                    <p>IEEE coordination and leadership</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="section">
+        <h2 class="section-title">Professional <span class="highlight">Experience</span></h2>
+        <p class="section-description">My career journey in mobile development, showcasing growth, achievements, and the impact I've made at each organization.</p>
+        
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="experience-card">
+                    <div class="experience-header">
+                        <div class="company-icon">VT</div>
+                        <div class="experience-title">
+                            <h3>Full Stack Mobile Developer Intern</h3>
+                            <div class="company">
+                                <i class="fas fa-building"></i>
+                                Visteon Tunisia
+                            </div>
+                        </div>
+                        <div class="experience-date">
+                            <i class="fas fa-calendar-alt"></i>
+                            June 2025 - August 2025
+                        </div>
+                    </div>
+                    <div class="experience-description">
+                        Full stack mobile development internship focusing on cross-platform applications and factory management systems (Flutter, Dart, Backend Integration).
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="experience-card">
+                    <div class="experience-header">
+                        <div class="company-icon">CA</div>
+                        <div class="experience-title">
+                            <h3>Mobile Developer</h3>
+                            <div class="company">
+                                <i class="fas fa-building"></i>
+                                CAFMET
+                            </div>
+                        </div>
+                        <div class="experience-date">
+                            <i class="fas fa-calendar-alt"></i>
+                            February 2025 - April 2025
+                        </div>
+                    </div>
+                    <div class="experience-description">
+                        Development of Flutter mobile applications for conference management (Flutter, SQL).
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="experience-card">
+                    <div class="experience-header">
+                        <div class="company-icon">VT</div>
+                        <div class="experience-title">
+                            <h3>Mobile Developer Internship</h3>
+                            <div class="company">
+                                <i class="fas fa-building"></i>
+                                Visteon Tunisia
+                            </div>
+                        </div>
+                        <div class="experience-date">
+                            <i class="fas fa-calendar-alt"></i>
+                            July 2024
+                        </div>
+                    </div>
+                    <div class="experience-description">
+                        Development of warehouse management mobile application (Flutter, SQL) for Visteon Tunisia.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="portfolio" class="section">
+        <h2 class="section-title">Featured <span class="highlight">Projects</span></h2>
+        <p class="section-description">A showcase of my most impactful mobile applications, demonstrating technical expertise, creative problem-solving, and user-centered design.</p>
+        
+        <div class="projects-grid">
+            <div class="project-card" onclick="openModal('menasyp')">
+                <i class="fas fa-external-link-alt external-link"></i>
+                <div class="project-header">
+                    <div class="project-logo">
+                        <img src="menasyp.png" alt="MenaSYP" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px; background-color: white; padding: 4px;">
+                    </div>
+                    <div class="project-title">MenaSYP 2025</div>
+                </div>
+                <div class="project-description">
+                    Official IEEE MenaSYP event application for participant and conference management.
+                </div>
+                <div class="project-tech">
+                    <span class="tech-tag">Flutter</span>
+                    <span class="tech-tag">Dart</span>
+                    <span class="tech-tag">Firebase</span>
+                </div>
+            </div>
+
+            <div class="project-card" onclick="openModal('cafmet')">
+                <i class="fas fa-external-link-alt external-link"></i>
+                <div class="project-header">
+                    <div class="project-logo">
+                        <img src="cafmet.jpg" alt="CAFMET" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
+                    </div>
+                    <div class="project-title">CAFMET</div>
+                </div>
+                <div class="project-description">
+                    Official conference management application with booking and session management.
+                </div>
+                <div class="project-tech">
+                    <span class="tech-tag">Flutter</span>
+                    <span class="tech-tag">SQLite</span>
+                    <span class="tech-tag">REST API</span>
+                </div>
+            </div>
+
+            <div class="project-card" onclick="openModal('agrisense')">
+                <i class="fas fa-external-link-alt external-link"></i>
+                <div class="project-header">
+                    <div class="project-logo">
+                        <img src="agrisense.png" alt="AgriSense" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px; background-color: white; padding: 4px;">
+                    </div>
+                    <div class="project-title">AgriSense</div>
+                </div>
+                <div class="project-description">
+                    Intelligent agricultural management system with UI/UX design and sensor integration.
+                </div>
+                <div class="project-tech">
+                    <span class="tech-tag">Flutter</span>
+                    <span class="tech-tag">IoT</span>
+                    <span class="tech-tag">Arduino</span>
+                </div>
+            </div>
+
+            <div class="project-card" onclick="openModal('spark')">
+                <i class="fas fa-external-link-alt external-link"></i>
+                <div class="project-header">
+                    <div class="project-logo">
+                        <img src="spark.png" alt="Spark" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
+                    </div>
+                    <div class="project-title">Spark</div>
+                </div>
+                <div class="project-description">
+                    Educational STEM application for children developed for TSYP12 challenge.
+                </div>
+                <div class="project-tech">
+                    <span class="tech-tag">Flutter</span>
+                    <span class="tech-tag">Education</span>
+                    <span class="tech-tag">STEM</span>
+                </div>
+            </div>
+
+            <div class="project-card" onclick="openModal('vistrack')">
+                <i class="fas fa-external-link-alt external-link"></i>
+                <div class="project-header">
+                    <div class="project-logo">
+                        <img src="vistrack.png" alt="Vistrack" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
+                    </div>
+                    <div class="project-title">Vistrack</div>
+                </div>
+                <div class="project-description">
+                    Cross-platform factory export operations management system for Visteon Tunisia.
+                </div>
+                <div class="project-tech">
+                    <span class="tech-tag">Flutter</span>
+                    <span class="tech-tag">Cross-platform</span>
+                    <span class="tech-tag">Factory Management</span>
+                </div>
+            </div>
+
+            <div class="project-card" onclick="openModal('viscan')">
+                <i class="fas fa-external-link-alt external-link"></i>
+                <div class="project-header">
+                    <div class="project-logo">
+                        <img src="viscan.png" alt="Viscan" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px; background-color: white; padding: 4px;">
+                    </div>
+                    <div class="project-title">Viscan</div>
+                </div>
+                <div class="project-description">
+                    Warehouse management system with QR code scanning for Visteon Tunisia.
+                </div>
+                <div class="project-tech">
+                    <span class="tech-tag">Flutter</span>
+                    <span class="tech-tag">QR Codes</span>
+                    <span class="tech-tag">Warehouse Management</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="cta-section">
+            <p>Interested in seeing more projects or discussing collaboration opportunities?</p>
+            <a href="#contact">
+                Get in touch <i class="fas fa-external-link-alt"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="section">
+        <h2 class="section-title">Education & <span class="highlight">Certifications</span></h2>
+        <p class="section-description">My academic foundation and professional certifications that have shaped my expertise in mobile development and software engineering.</p>
+        
+        <div class="education-timeline">
+            <div class="education-item">
+                <div class="education-card">
+                    <div class="education-header">
+                        <div class="education-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div class="education-title">
+                            <h3>Engineering Cycle</h3>
+                            <div class="institution">
+                                <i class="fas fa-university"></i>
+                                INSAT
+                            </div>
+                        </div>
+                        <div class="education-date">
+                            <i class="fas fa-calendar-alt"></i>
+                            2024 – 2027
+                        </div>
+                    </div>
+                    <div class="education-description">
+                        Engineering cycle specializing in mobile development and embedded systems.
+                    </div>
+                </div>
+            </div>
+
+            <div class="education-item">
+                <div class="education-card">
+                    <div class="education-header">
+                        <div class="education-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div class="education-title">
+                            <h3>Preparatory Cycle</h3>
+                            <div class="institution">
+                                <i class="fas fa-university"></i>
+                                INSAT
+                            </div>
+                        </div>
+                        <div class="education-date">
+                            <i class="fas fa-calendar-alt"></i>
+                            2022 – 2024
+                        </div>
+                    </div>
+                    <div class="education-description">
+                        Integrated preparatory program at INSAT.
+                    </div>
+                </div>
+            </div>
+
+            <div class="education-item">
+                <div class="education-card">
+                    <div class="education-header">
+                        <div class="education-icon">
+                            <i class="fas fa-certificate"></i>
+                        </div>
+                        <div class="education-title">
+                            <h3>Bachelor's in Computer Science</h3>
+                            <div class="institution">
+                                <i class="fas fa-award"></i>
+                                With High Honors
+                            </div>
+                        </div>
+                        <div class="education-date">
+                            <i class="fas fa-calendar-alt"></i>
+                            2022
+                        </div>
+                    </div>
+                    <div class="education-description">
+                        High school diploma in Computer Science with honors.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Extracurricular Activities Section -->
+    <section class="section">
+        <h2 class="section-title">Extracurricular <span class="highlight">Activities</span></h2>
+        <p class="section-description">My involvement in professional organizations and leadership roles that demonstrate my commitment to technology and community.</p>
+        
+        <div class="activities-timeline">
+            <div class="activity-item">
+                <div class="activity-card">
+                    <div class="activity-header">
+                        <div class="activity-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="activity-title">
+                            <h3>IT Department Coordinator</h3>
+                            <div class="organization">
+                                <i class="fas fa-building"></i>
+                                IEEE INSAT SB - MenaSYP Committee
+                            </div>
+                        </div>
+                        <div class="activity-date">
+                            <i class="fas fa-calendar-alt"></i>
+                            March 2025
+                        </div>
+                    </div>
+                    <div class="activity-description">
+                        <p>Coordinated the IT department for the MenaSYP (Middle East and North Africa Student and Young Professional Congress) organizing committee. Supervised and managed all technological aspects of the event while developing the official mobile application for the congress.</p>
+                        <div class="activity-achievements">
+                            <h4>Key Achievements:</h4>
+                            <ul>
+                                <li>Led the development of the official MenaSYP 2025 mobile application</li>
+                                <li>Managed technical infrastructure and digital solutions for the event</li>
+                                <li>Coordinated IT team and ensured seamless event technology integration</li>
+                                <li>Delivered a comprehensive mobile solution for participant management</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="activity-item">
+                <div class="activity-card">
+                    <div class="activity-header">
+                        <div class="activity-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="activity-title">
+                            <h3>TSYP Challenge Participant</h3>
+                            <div class="organization">
+                                <i class="fas fa-building"></i>
+                                IEEE INSAT SB - TSYP Program
+                            </div>
+                        </div>
+                        <div class="activity-date">
+                            <i class="fas fa-calendar-alt"></i>
+                            2024
+                        </div>
+                    </div>
+                    <div class="activity-description">
+                        <p>Participated in the Tunisian Student & Youth Professionals (TSYP) program as part of the STAR Challenge. Developed a mobile application that showcased innovative solutions for educational technology.</p>
+                        <div class="activity-achievements">
+                            <h4>Key Achievements:</h4>
+                            <ul>
+                                <li>Developed "Spark" - an educational STEM application for children</li>
+                                <li>Created interactive learning experiences for ages 5-12</li>
+                                <li>Implemented gamification elements to enhance learning engagement</li>
+                                <li>Demonstrated expertise in educational technology development</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Languages & Interests Section -->
+    <section class="section">
+        <div class="languages-interests">
+            <div class="languages-section">
+                <h3 class="section-subtitle">
+                    <i class="fas fa-globe"></i>
+                    Languages
+                </h3>
+                <p class="section-description-small">Multilingual communication skills enabling effective collaboration with international teams and clients.</p>
+                
+                <div class="language-card">
+                    <div class="language-header">
+                        <span class="language-name">French</span>
+                        <span class="proficiency-level">Native</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 100%"></div>
+                    </div>
+                    <div class="progress-labels">
+                        <span>Beginner</span>
+                        <span>Fluent</span>
+                        <span>Native</span>
+                    </div>
+                </div>
+
+                <div class="language-card">
+                    <div class="language-header">
+                        <span class="language-name">English</span>
+                        <span class="proficiency-level">Professional</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 90%"></div>
+                    </div>
+                    <div class="progress-labels">
+                        <span>Beginner</span>
+                        <span>Fluent</span>
+                        <span>Native</span>
+                    </div>
+                </div>
+
+                <div class="language-card">
+                    <div class="language-header">
+                        <span class="language-name">Arabic</span>
+                        <span class="proficiency-level">Native</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 100%"></div>
+                    </div>
+                    <div class="progress-labels">
+                        <span>Beginner</span>
+                        <span>Fluent</span>
+                        <span>Native</span>
+                    </div>
+                </div>
+
+                <div class="language-card">
+                    <div class="language-header">
+                        <span class="language-name">German</span>
+                        <span class="proficiency-level">Basic</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 30%"></div>
+                    </div>
+                    <div class="progress-labels">
+                        <span>Beginner</span>
+                        <span>Fluent</span>
+                        <span>Native</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="interests-section">
+                <h3 class="section-subtitle">
+                    <i class="fas fa-heart"></i>
+                    Personal Interests
+                </h3>
+                <p class="section-description-small">Beyond coding, I'm passionate about various activities that inspire creativity and enhance my problem-solving skills.</p>
+                
+                <div class="interest-card">
+                    <div class="interest-icon">
+                        <i class="fas fa-futbol"></i>
+                    </div>
+                    <div class="interest-content">
+                        <h4>Sports</h4>
+                        <p>Physical activities and fitness</p>
+                    </div>
+                </div>
+
+                <div class="interest-card">
+                    <div class="interest-icon">
+                        <i class="fas fa-gamepad"></i>
+                    </div>
+                    <div class="interest-content">
+                        <h4>Gaming</h4>
+                        <p>Video games and interactive entertainment</p>
+                    </div>
+                </div>
+
+                <div class="interest-card">
+                    <div class="interest-icon">
+                        <i class="fas fa-fist-raised"></i>
+                    </div>
+                    <div class="interest-content">
+                        <h4>Martial Arts</h4>
+                        <p>Combat sports and self-defense</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="contact-container">
+            <div class="contact-intro">
+                <h2>Let's <span class="highlight">Connect</span></h2>
+                <p>Ready to discuss your next mobile project? I'm always excited to collaborate on innovative applications and explore new opportunities.</p>
+            </div>
+
+            <div class="contact-cards">
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3>Email</h3>
+                    <div class="value">belabria26@gmail.com</div>
+                    <div class="description">Best way to reach me for business inquiries</div>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <h3>Phone</h3>
+                    <div class="value">+216 25 820 430</div>
+                    <div class="description">Available for calls and messages</div>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3>Location</h3>
+                    <div class="value">Soliman, Nabeul, Tunisia</div>
+                    <div class="description">Open to remote work and opportunities</div>
+                </div>
+            </div>
+
+            <div class="social-section">
+                <h3>Follow Me <span class="highlight">Online</span></h3>
+                <div class="social-icons">
+                    <a href="https://github.com/SlimBelAbria" target="_blank" class="social-icon">
+                        <i class="fab fa-github"></i>
+                        <span>GitHub</span>
+                        <!-- <div class="username">@SlimBelAbria</div> -->
+                    </a>
+                    <a href="https://www.linkedin.com/in/slim-bel-abria-232057276/" target="_blank" class="social-icon">
+                        <i class="fab fa-linkedin"></i>
+                        <span>LinkedIn</span>
+                        <!--     <div class="username">Slim Bel Abria</div> -->
+                    </a>
+                    <a href="https://www.behance.net/belabriaslim" target="_blank" class="social-icon">
+                        <i class="fab fa-behance"></i>
+                        <span>Behance</span>
+                        <!-- <div class="username">@belabriaslim</div> -->
+                    </a>
+                </div>
+            </div>
+
+            <div class="project-cta">
+                <h3>Ready to Start Your Project?</h3>
+                <p>Whether you're a startup looking to build your first mobile app or an established company seeking to enhance your digital presence, I'm here to help bring your vision to life.</p>
+                <div class="cta-buttons-final">
+                    <button onclick="openProjectDialog()" class="btn-final-primary">Start a Project</button>
+                    <button onclick="openMeetingDialog()" class="btn-final-secondary">Schedule a Call</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-top">
+                        <div class="footer-logo">
+            <span class="logo-symbol">&lt;&gt;</span>
+            <span class="logo-text">Slim Bel Abria</span>
+        </div>
+        <div class="footer-copyright">
+            &copy; 2025 Slim Bel Abria. All rights reserved.
+        </div>
+                <div class="footer-tech">
+                  
+                </div>
+            </div>
+            <div class="footer-bottom">
+               </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize EmailJS
+        (function() {
+            emailjs.init("YOUR_PUBLIC_KEY"); // You'll need to replace this with your actual EmailJS public key
+        })();
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Header background on scroll
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(10, 10, 10, 0.98)';
+            } else {
+                header.style.background = 'rgba(10, 10, 10, 0.95)';
+            }
+        });
+
+        // Animate progress bars on scroll
+        const observerOptions = {
+            threshold: 0.5,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const progressBar = entry.target.querySelector('.progress-fill');
+                    if (progressBar) {
+                        const width = progressBar.style.width;
+                        progressBar.style.width = '0%';
+                        setTimeout(() => {
+                            progressBar.style.width = width;
+                        }, 100);
+                    }
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.language-card').forEach(card => {
+            observer.observe(card);
+        });
+
+        // CTA Button functionality
+        document.querySelectorAll('.btn-final-primary, .btn-final-secondary').forEach(button => {
+            button.addEventListener('click', function(e) {
+                // Add a small delay for visual feedback
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = 'scale(1)';
+                }, 150);
+            });
+        });
+
+        // Dialog Functions
+        function openProjectDialog() {
+            document.getElementById('projectDialog').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeProjectDialog() {
+            document.getElementById('projectDialog').style.display = 'none';
+            document.body.style.overflow = 'auto';
+            document.getElementById('projectForm').reset();
+        }
+
+        function openMeetingDialog() {
+            document.getElementById('meetingDialog').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+            // Set minimum date to today
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('meetingDate').min = today;
+        }
+
+        function closeMeetingDialog() {
+            document.getElementById('meetingDialog').style.display = 'none';
+            document.body.style.overflow = 'auto';
+            document.getElementById('meetingForm').reset();
+        }
+
+        // Form submission handlers
+        document.getElementById('projectForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('projectEmail').value;
+            const name = document.getElementById('projectName').value;
+            const type = document.getElementById('projectType').value;
+            const description = document.getElementById('projectDescription').value;
+            const timeline = document.getElementById('projectTimeline').value;
+
+            // Show loading state
+            const submitBtn = e.target.querySelector('.btn-send');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Sending...';
+            submitBtn.disabled = true;
+
+            // Send email using EmailJS
+            emailjs.send('service_id', 'template_id', {
+                to_email: 'belabria26@gmail.com',
+                from_email: email,
+                from_name: name,
+                project_type: type,
+                project_description: description,
+                timeline: timeline,
+                subject: 'Project Inquiry - Portfolio'
+            })
+            .then(function(response) {
+                showSuccessMessage('Project Inquiry Sent!', `
+                    <p>Thank you for your project inquiry!</p>
+                    <p>I've received your message and will get back to you within 24 hours.</p>
+                    <p><strong>From:</strong> ${name} (${email})</p>
+                    <p><strong>Project Type:</strong> ${type}</p>
+                    <p><strong>Timeline:</strong> ${timeline}</p>
+                `);
+                closeProjectDialog();
+            })
+            .catch(function(error) {
+                showSuccessMessage('Email Service Unavailable', `
+                    <p>Sorry, the email service is currently unavailable.</p>
+                    <p><strong>Please send an email directly to:</strong> <a href="mailto:belabria26@gmail.com" style="color: #00ff88;">belabria26@gmail.com</a></p>
+                    <p><strong>Subject:</strong> Project Inquiry - Portfolio</p>
+                    <p><strong>Include:</strong> Your name, project type, description, and timeline.</p>
+                `);
+                closeProjectDialog();
+            })
+            .finally(function() {
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            });
+        });
+
+        document.getElementById('meetingForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('meetingEmail').value;
+            const name = document.getElementById('meetingName').value;
+            const date = document.getElementById('meetingDate').value;
+            const time = document.getElementById('meetingTime').value;
+            const duration = document.getElementById('meetingDuration').value;
+            const topic = document.getElementById('meetingTopic').value;
+
+            // Show loading state
+            const submitBtn = e.target.querySelector('.btn-send');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Scheduling...';
+            submitBtn.disabled = true;
+
+            // Send email using EmailJS
+            emailjs.send('service_id', 'template_id', {
+                to_email: 'belabria26@gmail.com',
+                from_email: email,
+                from_name: name,
+                meeting_date: date,
+                meeting_time: time,
+                meeting_duration: duration,
+                meeting_topic: topic,
+                subject: 'Meeting Request - Portfolio'
+            })
+            .then(function(response) {
+                showSuccessMessage('Meeting Request Sent!', `
+                    <p>Thank you for your meeting request!</p>
+                    <p>I've received your request and will confirm the meeting time within 24 hours.</p>
+                    <p><strong>From:</strong> ${name} (${email})</p>
+                    <p><strong>Date:</strong> ${date}</p>
+                    <p><strong>Time:</strong> ${time}</p>
+                    <p><strong>Duration:</strong> ${duration} minutes</p>
+                `);
+                closeMeetingDialog();
+            })
+            .catch(function(error) {
+                showSuccessMessage('Email Service Unavailable', `
+                    <p>Sorry, the email service is currently unavailable.</p>
+                    <p><strong>Please send an email directly to:</strong> <a href="mailto:belabria26@gmail.com" style="color: #00ff88;">belabria26@gmail.com</a></p>
+                    <p><strong>Subject:</strong> Meeting Request - Portfolio</p>
+                    <p><strong>Include:</strong> Your name, preferred date/time, duration, and meeting topic.</p>
+                `);
+                closeMeetingDialog();
+            })
+            .finally(function() {
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            });
+        });
+
+        function showSuccessMessage(title, content) {
+            const successDialog = document.createElement('div');
+            successDialog.className = 'dialog-overlay';
+            successDialog.style.display = 'flex';
+            successDialog.innerHTML = `
+                <div class="dialog">
+                    <div class="dialog-header">
+                        <h2 class="dialog-title">${title}</h2>
+                        <button class="dialog-close" onclick="this.closest('.dialog-overlay').remove()">&times;</button>
+                    </div>
+                    <div style="color: #ffffff; line-height: 1.6;">
+                        ${content}
+                    </div>
+                    <div class="dialog-buttons">
+                        <button class="btn-send" onclick="this.closest('.dialog-overlay').remove()">Close</button>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(successDialog);
+        }
+
+        // Close dialogs when clicking outside
+        document.querySelectorAll('.dialog-overlay').forEach(overlay => {
+            overlay.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    this.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        });
+    </script>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" onclick="scrollToTop()">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- Project Modal -->
+    <div id="projectModal" class="modal">
+        <div class="modal-content" id="modalContent">
+        </div>
+    </div>
+
+    <!-- Project Inquiry Dialog -->
+    <div id="projectDialog" class="dialog-overlay">
+        <div class="dialog">
+            <div class="dialog-header">
+                <h2 class="dialog-title">Start a Project</h2>
+                <button class="dialog-close" onclick="closeProjectDialog()">&times;</button>
+            </div>
+            <form id="projectForm">
+                <div class="form-group">
+                    <label class="form-label" for="projectEmail">Your Email *</label>
+                    <input type="email" id="projectEmail" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="projectName">Your Name *</label>
+                    <input type="text" id="projectName" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="projectType">Project Type *</label>
+                    <select id="projectType" class="form-select" required>
+                        <option value="">Select project type</option>
+                        <option value="Mobile App">Mobile App</option>
+                        <option value="Web Application">Web Application</option>
+                        <option value="UI/UX Design">UI/UX Design</option>
+                        <option value="Consultation">Consultation</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="projectDescription">Project Description *</label>
+                    <textarea id="projectDescription" class="form-textarea" placeholder="Describe your project idea, requirements, and goals..." required></textarea>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="projectTimeline">Timeline</label>
+                    <select id="projectTimeline" class="form-select">
+                        <option value="">Select timeline</option>
+                        <option value="ASAP">ASAP</option>
+                        <option value="1-2 weeks">1-2 weeks</option>
+                        <option value="1-2 months">1-2 months</option>
+                        <option value="3+ months">3+ months</option>
+                        <option value="Flexible">Flexible</option>
+                    </select>
+                </div>
+                <div class="dialog-buttons">
+                    <button type="button" class="btn-cancel" onclick="closeProjectDialog()">Cancel</button>
+                    <button type="submit" class="btn-send">Send Inquiry</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Meeting Scheduler Dialog -->
+    <div id="meetingDialog" class="dialog-overlay">
+        <div class="dialog">
+            <div class="dialog-header">
+                <h2 class="dialog-title">Schedule a Call</h2>
+                <button class="dialog-close" onclick="closeMeetingDialog()">&times;</button>
+            </div>
+            <form id="meetingForm">
+                <div class="form-group">
+                    <label class="form-label" for="meetingEmail">Your Email *</label>
+                    <input type="email" id="meetingEmail" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="meetingName">Your Name *</label>
+                    <input type="text" id="meetingName" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="meetingDate">Preferred Date *</label>
+                    <input type="date" id="meetingDate" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="meetingTime">Preferred Time *</label>
+                    <select id="meetingTime" class="form-select" required>
+                        <option value="">Select time</option>
+                        <option value="09:00">9:00 AM</option>
+                        <option value="10:00">10:00 AM</option>
+                        <option value="11:00">11:00 AM</option>
+                        <option value="12:00">12:00 PM</option>
+                        <option value="13:00">1:00 PM</option>
+                        <option value="14:00">2:00 PM</option>
+                        <option value="15:00">3:00 PM</option>
+                        <option value="16:00">4:00 PM</option>
+                        <option value="17:00">5:00 PM</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="meetingDuration">Duration</label>
+                    <select id="meetingDuration" class="form-select">
+                        <option value="30">30 minutes</option>
+                        <option value="60" selected>1 hour</option>
+                        <option value="90">1.5 hours</option>
+                        <option value="120">2 hours</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="meetingTopic">Meeting Topic *</label>
+                    <textarea id="meetingTopic" class="form-textarea" placeholder="What would you like to discuss?" required></textarea>
+                </div>
+                <div class="dialog-buttons">
+                    <button type="button" class="btn-cancel" onclick="closeMeetingDialog()">Cancel</button>
+                    <button type="submit" class="btn-send">Schedule Meeting</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Modal functionality
+        function openModal(projectId) {
+            const modal = document.getElementById('projectModal');
+            const modalContent = document.getElementById('modalContent');
+            
+            // Get project data
+            const projectData = getProjectData(projectId);
+            
+            // Update modal content
+            modalContent.innerHTML = projectData;
+            
+            // Show modal
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('projectModal');
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        function getProjectData(projectId) {
+            const projects = {
+                menasyp: `
+                    <div class="modal-header">
+                        <img src="menasyp.png" alt="MenaSYP 2025" class="modal-logo transparent-bg">
+                        <h1 class="modal-title">MenaSYP 2025</h1>
+                        <span class="close" onclick="closeModal()">&times;</span>
+                    </div>
+                    
+                    <div class="modal-section">
+                        <h3>Project Overview</h3>
+                        <p>MenaSYP 2025 is the official mobile application for the IEEE Middle East and North Africa Student and Young Professional Congress. This comprehensive event management platform was developed to streamline the entire conference experience, from registration to networking. The app serves as the central hub for participants, speakers, and organizers, providing real-time updates and seamless interaction throughout the event.</p>
+                        <p>The project demonstrates advanced Flutter development skills, real-time data synchronization, and user experience optimization for large-scale events. It successfully handled hundreds of participants during the IEEE MenaSYP 2025 conference, showcasing robust performance and intuitive navigation.</p>
+                    </div>
+
+                    <div class="modal-section">
+                        <h3>Core Functionality</h3>
+                        <ul>
+                            <li>Event registration and participant management system</li>
+                            <li>Conference schedule and session tracking</li>
+                            <li>Real-time notifications for event updates</li>
+                            <li>QR code-based check-in system</li>
+                            <li>Networking features for participants</li>
+                            <li>Speaker profiles and session details</li>
+                            <li>Interactive event map and venue information</li>
+                        </ul>
+                    </div>
+
+                    <div class="modal-tech">
+                        <span class="modal-tech-tag">Flutter</span>
+                        <span class="modal-tech-tag">Dart</span>
+                        <span class="modal-tech-tag">Firebase</span>
+                        <span class="modal-tech-tag">QR Code</span>
+                        <span class="modal-tech-tag">Real-time</span>
+                    </div>
+                `,
+                
+                cafmet: `
+                    <div class="modal-header">
+                        <img src="cafmet.jpg" alt="CAFMET" class="modal-logo">
+                        <h1 class="modal-title">CAFMET</h1>
+                        <span class="close" onclick="closeModal()">&times;</span>
+                    </div>
+                    
+                    <div class="modal-section">
+                        <h3>Project Overview</h3>
+                        <p>CAFMET is the official conference management application designed to revolutionize how professional conferences are organized and experienced. This comprehensive platform addresses the complex needs of conference organizers, speakers, and attendees by providing a unified solution for event management, networking, and engagement.</p>
+                        <p>The application streamlines the entire conference lifecycle, from initial planning to post-event analytics. It features advanced booking systems, real-time attendance tracking, and sophisticated networking tools that enhance the overall conference experience. The project showcases expertise in building scalable business applications with complex data management requirements.</p>
+                    </div>
+
+                    <div class="modal-section">
+                        <h3>Core Functionality</h3>
+                        <ul>
+                            <li>Complete conference booking and registration system</li>
+                            <li>Session management with speaker assignments</li>
+                            <li>Real-time attendance tracking</li>
+                            <li>Networking and business card exchange</li>
+                            <li>Presentation materials sharing</li>
+                            <li>Live polling and Q&A during sessions</li>
+                            <li>Analytics dashboard for organizers</li>
+                            <li>Multi-language support</li>
+                        </ul>
+                    </div>
+
+                    <div class="modal-tech">
+                        <span class="modal-tech-tag">Flutter</span>
+                        <span class="modal-tech-tag">SQLite</span>
+                        <span class="modal-tech-tag">REST API</span>
+                        <span class="modal-tech-tag">Real-time</span>
+                        <span class="modal-tech-tag">Analytics</span>
+                    </div>
+                `,
+                
+                agrisense: `
+                    <div class="modal-header">
+                        <img src="agrisense.png" alt="AgriSense" class="modal-logo">
+                        <h1 class="modal-title">AgriSense</h1>
+                        <span class="close" onclick="closeModal()">&times;</span>
+                    </div>
+                    
+                    <div class="modal-section">
+                        <h3>Project Overview</h3>
+                        <p>AgriSense represents a cutting-edge agricultural technology solution that combines mobile application development with IoT sensor integration to create a comprehensive farm management system. This innovative project bridges the gap between traditional farming practices and modern technology, providing farmers with real-time insights and automated control systems.</p>
+                        <p>The system integrates various sensors for monitoring soil conditions, weather patterns, and crop health, delivering actionable data through an intuitive mobile interface. AgriSense demonstrates expertise in IoT integration, sensor data processing, and creating practical solutions for real-world agricultural challenges. The project showcases the potential of technology to transform traditional industries.</p>
+                    </div>
+
+                    <div class="modal-section">
+                        <h3>Core Functionality</h3>
+                        <ul>
+                            <li>Real-time crop monitoring with sensor data</li>
+                            <li>Weather integration and forecasting</li>
+                            <li>Automated irrigation control system</li>
+                            <li>Soil quality analysis and recommendations</li>
+                            <li>Crop health monitoring with AI detection</li>
+                            <li>Inventory management for agricultural supplies</li>
+                            <li>Yield prediction and optimization</li>
+                            <li>Alert system for critical conditions</li>
+                        </ul>
+                    </div>
+
+                    <div class="modal-tech">
+                        <span class="modal-tech-tag">Flutter</span>
+                        <span class="modal-tech-tag">IoT</span>
+                        <span class="modal-tech-tag">Arduino</span>
+                        <span class="modal-tech-tag">Sensors</span>
+                        <span class="modal-tech-tag">AI</span>
+                    </div>
+                `,
+                
+                spark: `
+                    <div class="modal-header">
+                        <img src="spark.png" alt="Spark" class="modal-logo">
+                        <h1 class="modal-title">Spark</h1>
+                        <span class="close" onclick="closeModal()">&times;</span>
+                    </div>
+                    
+                    <div class="modal-section">
+                        <h3>Project Overview</h3>
+                        <p>Spark is an innovative educational application designed to ignite children's passion for STEM (Science, Technology, Engineering, and Mathematics) through interactive learning experiences. Developed for the TSYP12 challenge, this project combines educational content with gamification elements to create an engaging learning environment for children aged 5-12.</p>
+                        <p>The application features virtual laboratory simulations, interactive experiments, and personalized learning paths that adapt to each child's progress. Spark demonstrates expertise in educational technology, gamification design, and creating age-appropriate content that makes learning both fun and effective. The project showcases the potential of mobile technology to transform education and inspire the next generation of innovators.</p>
+                    </div>
+
+                    <div class="modal-section">
+                        <h3>Core Functionality</h3>
+                        <ul>
+                            <li>Interactive STEM lessons and experiments</li>
+                            <li>Gamified learning with points and achievements</li>
+                            <li>Virtual lab simulations</li>
+                            <li>Progress tracking and personalized learning paths</li>
+                            <li>Parent/teacher dashboard</li>
+                            <li>Offline learning capabilities</li>
+                            <li>Multi-age content (5-12 years)</li>
+                            <li>Safety-focused virtual experiments</li>
+                        </ul>
+                    </div>
+
+                    <div class="modal-tech">
+                        <span class="modal-tech-tag">Flutter</span>
+                        <span class="modal-tech-tag">Education</span>
+                        <span class="modal-tech-tag">STEM</span>
+                        <span class="modal-tech-tag">Gamification</span>
+                        <span class="modal-tech-tag">3D</span>
+                    </div>
+                `,
+                
+                vistrack: `
+                    <div class="modal-header">
+                        <img src="vistrack.png" alt="Vistrack" class="modal-logo">
+                        <h1 class="modal-title">Vistrack</h1>
+                        <span class="close" onclick="closeModal()">&times;</span>
+                    </div>
+                    
+                    <div class="modal-section">
+                        <h3>Project Overview</h3>
+                        <p>Vistrack is a comprehensive cross-platform factory management system developed for Visteon Tunisia to streamline export operations and enhance productivity. This enterprise-level application represents a significant advancement in industrial software, providing real-time monitoring and control of factory processes across multiple platforms.</p>
+                        <p>The system integrates advanced analytics, user management, and operational tracking to create a unified platform for factory management. Vistrack demonstrates expertise in building complex enterprise applications, cross-platform development, and creating solutions that meet the rigorous demands of industrial environments. The project showcases the ability to develop scalable business solutions that directly impact operational efficiency.</p>
+                    </div>
+
+                    <div class="modal-section">
+                        <h3>Core Functionality</h3>
+                        <ul>
+                            <li>Home Dashboard with factory operations overview and KPIs</li>
+                            <li>Product tracking across the entire export process</li>
+                            <li>User management with role-based access control</li>
+                            <li>Shift planning and assignment system</li>
+                            <li>Insights & Analytics with interactive charts</li>
+                            <li>Comprehensive history log for all activities</li>
+                            <li>Settings configuration and system preferences</li>
+                            <li>Real-time data synchronization</li>
+                        </ul>
+                    </div>
+
+                    <div class="modal-tech">
+                        <span class="modal-tech-tag">Flutter</span>
+                        <span class="modal-tech-tag">Dart</span>
+                        <span class="modal-tech-tag">Cross-platform</span>
+                        <span class="modal-tech-tag">Factory Management</span>
+                        <span class="modal-tech-tag">Analytics</span>
+                    </div>
+                `,
+                
+                viscan: `
+                    <div class="modal-header">
+                        <img src="viscan.png" alt="Viscan" class="modal-logo transparent-bg">
+                        <h1 class="modal-title">Viscan</h1>
+                        <span class="close" onclick="closeModal()">&times;</span>
+                    </div>
+                    
+                    <div class="modal-section">
+                        <h3>Project Overview</h3>
+                        <p>Viscan is a specialized warehouse management system developed for Visteon Tunisia that leverages QR code technology to revolutionize inventory tracking and warehouse operations. This innovative solution addresses the complex challenges of modern warehouse management by providing real-time visibility and control over inventory processes.</p>
+                        <p>The system integrates advanced scanning technology, real-time data synchronization, and comprehensive reporting to create an efficient warehouse management ecosystem. Viscan demonstrates expertise in barcode/QR code integration, real-time data processing, and creating practical solutions for industrial environments. The project showcases the ability to develop specialized tools that significantly improve operational efficiency in warehouse settings.</p>
+                    </div>
+
+                    <div class="modal-section">
+                        <h3>Core Functionality</h3>
+                        <ul>
+                            <li>QR code scanning for inventory tracking</li>
+                            <li>Real-time stock level monitoring</li>
+                            <li>Barcode generation and printing</li>
+                            <li>Order fulfillment and shipping tracking</li>
+                            <li>Warehouse layout optimization</li>
+                            <li>Employee task assignment</li>
+                            <li>Inventory reports and analytics</li>
+                            <li>Integration with ERP systems</li>
+                        </ul>
+                    </div>
+
+                    <div class="modal-tech">
+                        <span class="modal-tech-tag">Flutter</span>
+                        <span class="modal-tech-tag">QR Codes</span>
+                        <span class="modal-tech-tag">Warehouse Management</span>
+                        <span class="modal-tech-tag">Barcode</span>
+                        <span class="modal-tech-tag">ERP</span>
+                    </div>
+                `
+            };
+            
+            return projects[projectId] || '';
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('projectModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+
+        // Back to Top functionality
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Show/hide back to top button based on scroll position
+        window.addEventListener('scroll', function() {
+            const backToTopButton = document.getElementById('backToTop');
+            if (window.scrollY > 300) {
+                backToTopButton.classList.add('show');
+            } else {
+                backToTopButton.classList.remove('show');
+            }
+        });
+    </script>
+</body>
+</html>
